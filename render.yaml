@@ -5,11 +5,9 @@ services:
     region: oregon
     plan: free
     buildCommand: pip install -r backend/requirements.txt
-    startCommand: python -m uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /health
     envVars:
-      - key: PYTHONPATH
-        value: .
       - key: DATABASE_URL
         sync: false
       - key: GROQ_API_KEY

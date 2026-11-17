@@ -23,7 +23,7 @@ import { useToast } from '../context/ToastContext';
 import PageSkeleton from '../components/PageSkeleton';
 import './SettingsPage.css';
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const API = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/+$/, '');
 
 const safeDecode = (url) => {
   if (!url) return '';

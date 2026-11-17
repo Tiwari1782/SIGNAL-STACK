@@ -1,0 +1,391 @@
+/* Monday Morning Brief Styles */
+.brief-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-sm);
+}
+
+.brief-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s-sm);
+  flex-wrap: wrap;
+}
+
+.brief-subtitle {
+  color: var(--tertiary);
+  font-size: 16px;
+  max-width: 650px;
+}
+
+.brief-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* History Card */
+.brief-history-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  flex-wrap: wrap;
+}
+
+.history-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--tertiary);
+  text-transform: uppercase;
+}
+
+.history-chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.history-chip {
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: var(--r-xl);
+  font-size: 13px;
+  color: var(--primary-strong);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.history-chip:hover {
+  border-color: var(--primary);
+}
+
+.history-chip--active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  font-weight: 700;
+}
+
+/* Report Container */
+.brief-report-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-sm);
+}
+
+.brief-cover {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 4px solid var(--primary);
+}
+
+.brief-meta-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--primary);
+}
+
+.brief-report-title {
+  font-size: 1.8rem;
+  color: var(--primary-strong);
+}
+
+.brief-report-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--tertiary);
+  flex-wrap: wrap;
+}
+
+/* Sections */
+.brief-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+
+.section-num {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--primary);
+  background: rgba(0, 115, 209, 0.1);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.section-header h3 {
+  font-size: 1.2rem;
+  color: var(--primary-strong);
+  margin: 0;
+}
+
+.section-subtitle-tag {
+  font-size: 12px;
+  color: var(--tertiary);
+  font-weight: normal;
+}
+
+.section-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--on-surface);
+}
+
+.section-empty-msg {
+  color: var(--tertiary);
+  font-style: italic;
+  font-size: 14px;
+}
+
+/* Exec Summary */
+.section-exec {
+  background: #fdfefe;
+  border-left: 4px solid var(--primary);
+}
+
+.exec-summary-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.exec-summary-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--on-surface);
+}
+
+.exec-summary-icon {
+  font-size: 18px;
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* Cards Grids in Brief */
+.brief-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.brief-sub-card {
+  background: var(--accent-soft);
+  border-radius: var(--r-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.opp-card {
+  border-left: 4px solid var(--secondary);
+}
+
+.threat-card {
+  border-left: 4px solid var(--error);
+}
+
+.sub-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 15px;
+}
+
+.sub-card-text {
+  font-size: 14px;
+  color: var(--on-surface);
+}
+
+.sub-card-evidence {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--tertiary);
+}
+
+.sub-card-next {
+  font-size: 13px;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* Actions List */
+.actions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.action-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--accent-soft);
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.action-item:hover {
+  border-color: var(--primary);
+}
+
+.action-item--done {
+  opacity: 0.6;
+  background: #f8f9fa;
+}
+
+.action-item--done .action-title {
+  text-decoration: line-through;
+}
+
+.action-checkbox {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  font-size: 20px;
+  margin-top: 2px;
+}
+
+.check-icon-open {
+  color: var(--tertiary);
+}
+
+.check-icon-done {
+  color: var(--secondary);
+}
+
+.action-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.action-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.action-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary-strong);
+}
+
+.action-reason {
+  font-size: 13px;
+  color: var(--tertiary);
+}
+
+/* Watchlist */
+.watchlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.watchlist-card {
+  background: var(--accent-soft);
+  padding: 14px;
+  border-radius: var(--r-md);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
+
+/* Appendix */
+.appendix-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.appendix-item {
+  background: var(--accent-soft);
+  padding: 14px;
+  border-radius: var(--r-md);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.appendix-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.appendix-url {
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+}
+
+.appendix-quote {
+  font-style: italic;
+  color: var(--tertiary);
+  margin: 0;
+}
+
+.email-status-banner {
+  padding: 10px 14px;
+  border-radius: var(--r-md);
+  font-size: 14px;
+}
+
+.status-ok {
+  background: #e6f4ea;
+  color: #1e7e34;
+}
+
+.status-err {
+  background: #fdecea;
+  color: var(--error);
+}
+
+.brief-loading,
+.brief-empty {
+  text-align: center;
+  padding: var(--s-lg);
+  color: var(--tertiary);
+}

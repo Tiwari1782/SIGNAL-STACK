@@ -1,0 +1,139 @@
+/* Company Setup Styles */
+.setup-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-sm);
+}
+
+.setup-subtitle {
+  color: var(--tertiary);
+  font-size: 16px;
+  max-width: 650px;
+}
+
+.setup-form {
+  margin-bottom: var(--s-xs);
+}
+
+.setup-form-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-sm);
+  margin-bottom: var(--s-sm);
+}
+
+@media (max-width: 768px) {
+  .setup-form-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--tertiary);
+  letter-spacing: 0.5px;
+}
+
+.setup-error {
+  background: #fdecea;
+  color: var(--error);
+  padding: 12px 18px;
+  border-radius: var(--r-md);
+  font-size: 14px;
+}
+
+.setup-empty {
+  color: var(--tertiary);
+  font-style: italic;
+}
+
+.setup-company-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--s-sm);
+}
+
+.setup-company-card {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  border: 1px solid #DFE3E8;
+}
+
+.setup-company-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 24px rgba(0, 115, 209, 0.1),
+    0 2px 6px rgba(36, 56, 85, 0.05),
+    inset 0 1px 0 #FFFFFF;
+}
+
+.setup-company-card--active {
+  border-color: var(--primary);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F5F9FE 100%);
+  box-shadow: 
+    0 0 0 2px rgba(0, 115, 209, 0.25),
+    0 8px 20px rgba(0, 115, 209, 0.1),
+    inset 0 1px 0 #FFFFFF;
+}
+
+.setup-company-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.company-selection-check-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.company-check-btn {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 22px;
+  color: var(--tertiary);
+  display: flex;
+  align-items: center;
+  padding: 0;
+  transition: all 0.15s;
+}
+
+.company-check-btn--checked {
+  color: var(--primary);
+  filter: drop-shadow(0 1px 2px rgba(0, 115, 209, 0.3));
+}
+
+.setup-company-url {
+  font-size: 14px;
+  color: var(--primary);
+  word-break: break-all;
+  display: inline-flex;
+  align-items: center;
+}
+
+.setup-company-date {
+  font-size: 12px;
+  color: var(--tertiary);
+}
+
+.setup-research-btn {
+  margin-top: 6px;
+  align-self: flex-start;
+  padding: 8px 18px;
+  font-size: 13px;
+}

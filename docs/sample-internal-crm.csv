@@ -1,0 +1,6 @@
+Deal_ID,Prospect_Name,Target_Country,Stage,Outcome,Competitor_Lost_To,Primary_Objection_Lost_Reason,Notes
+DEAL-1042,Rohan Sharma,UK,Admissions Closed,Lost,IDP Education,"Visa processing timeline too slow; IDP guaranteed 14-day priority processing","Student had conditional offer for University of Manchester; withdrew because our counselor took 6 days to respond to visa query"
+DEAL-1049,Ananya Sen,Canada,Application Review,Lost,Yocket,"Pricing too high for premium counseling package","Parent objected to Rs. 45,000 fee citing Yocket offers automated university shortlisting for Rs. 15,000"
+DEAL-1055,Vikram Malhotra,Germany,Visa Filing,Lost,Self-apply,"Lack of public university APS certificate guidance","Student wanted public TU9 university admission, felt MeetUniversity counselors were only pushing UK private colleges with commissions"
+DEAL-1061,Pooja Patel,Australia,Deposit,Won,None,"Requested deferred fee payment","Won after offering 2-installment payment option; requested WhatsApp updates for visa status"
+DEAL-1073,Aditya Verma,Ireland,Shortlisting,Lost,iSchoolConnect,"Platform missing scholarship probability calculator","Prospect wanted AI tool to calculate scholarship chances before paying enrollment fee"

@@ -1,0 +1,103 @@
+.profile-page {}
+
+.profile-header {
+  margin-bottom: var(--s-sm);
+}
+
+.profile-website {
+  font-size: 15px;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+}
+
+.profile-empty {
+  text-align: center;
+  padding: var(--s-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-xs);
+}
+
+.profile-empty-text {
+  color: var(--tertiary);
+  font-style: italic;
+}
+
+.profile-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--s-sm);
+}
+
+.profile-fact-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-fact-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.profile-fact-label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--tertiary);
+}
+
+.profile-fact-value {
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: var(--r-sm);
+  transition: background 0.15s;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--accent-soft);
+  border: 1px solid transparent;
+}
+
+.profile-fact-value:hover {
+  border-color: var(--border);
+}
+
+.profile-fact-edit-icon {
+  font-size: 14px;
+  color: var(--tertiary);
+  opacity: 0.6;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.profile-fact-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile-fact-edit-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.profile-fact-edit-actions .btn-primary,
+.profile-fact-edit-actions .btn-secondary {
+  padding: 8px 18px;
+  font-size: 14px;
+}
+
+.profile-fact-evidence {
+  font-size: 13px;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+}

@@ -1,0 +1,201 @@
+---
+version: alpha
+name: MeetUniversity
+description: A bright, trustworthy admissions and study-abroad system with bold editorial headlines and a clean blue-green accent palette.
+colors:
+  primary: "#0073D1"
+  primary-strong: "#243855"
+  secondary: "#7FB000"
+  tertiary: "#5D6B81"
+  neutral: "#FFFFFF"
+  surface: "#FFFFFF"
+  on-surface: "#243855"
+  muted: "#5D6B81"
+  border: "#E7E7E8"
+  accent-soft: "#F5F8FC"
+  error: "#D64545"
+typography:
+  headline-display:
+    fontFamily: "DM Sans"
+    fontSize: "90px"
+    fontWeight: 700
+    lineHeight: "108px"
+    letterSpacing: "0px"
+  headline-lg:
+    fontFamily: "Koulen"
+    fontSize: "62px"
+    fontWeight: 400
+    lineHeight: "90px"
+    letterSpacing: "0px"
+  headline-md:
+    fontFamily: "Koulen"
+    fontSize: "42px"
+    fontWeight: 400
+    lineHeight: "50px"
+    letterSpacing: "0px"
+  headline-sm:
+    fontFamily: "DM Sans"
+    fontSize: "29px"
+    fontWeight: 400
+    lineHeight: "35px"
+    letterSpacing: "0px"
+  body-lg:
+    fontFamily: "DM Sans"
+    fontSize: "20px"
+    fontWeight: 400
+    lineHeight: "30px"
+    letterSpacing: "0px"
+  body-md:
+    fontFamily: "DM Sans"
+    fontSize: "18px"
+    fontWeight: 400
+    lineHeight: "28px"
+    letterSpacing: "0px"
+  body-sm:
+    fontFamily: "DM Sans"
+    fontSize: "16px"
+    fontWeight: 400
+    lineHeight: "24px"
+    letterSpacing: "0px"
+  label-lg:
+    fontFamily: "DM Sans"
+    fontSize: "18px"
+    fontWeight: 500
+    lineHeight: "24px"
+    letterSpacing: "0px"
+  label-md:
+    fontFamily: "DM Sans"
+    fontSize: "16px"
+    fontWeight: 500
+    lineHeight: "22px"
+    letterSpacing: "0px"
+  label-sm:
+    fontFamily: "DM Sans"
+    fontSize: "14px"
+    fontWeight: 500
+    lineHeight: "18px"
+    letterSpacing: "0px"
+  nav-link:
+    fontFamily: "DM Sans"
+    fontSize: "18px"
+    fontWeight: 400
+    lineHeight: "24px"
+    letterSpacing: "0px"
+  button-text:
+    fontFamily: "DM Sans"
+    fontSize: "18px"
+    fontWeight: 500
+    lineHeight: "24px"
+    letterSpacing: "0px"
+rounded:
+  none: 0px
+  sm: 4px
+  md: 8px
+  lg: 16px
+  xl: 32px
+  full: 9999px
+spacing:
+  xs: 10px
+  sm: 20px
+  md: 30px
+  lg: 40px
+  xl: 150px
+components:
+  button-primary:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.neutral}"
+    typography: "{typography.button-text}"
+    rounded: "{rounded.xl}"
+    padding: "21px 30px"
+    height: "77px"
+  button-primary-hover:
+    backgroundColor: "{colors.primary-strong}"
+    textColor: "{colors.neutral}"
+    typography: "{typography.button-text}"
+    rounded: "{rounded.xl}"
+  button-secondary:
+    backgroundColor: "{colors.neutral}"
+    textColor: "{colors.primary-strong}"
+    typography: "{typography.button-text}"
+    rounded: "{rounded.xl}"
+    padding: "21px 30px"
+    height: "77px"
+  button-link:
+    backgroundColor: "transparent"
+    textColor: "{colors.primary-strong}"
+    typography: "{typography.label-lg}"
+    rounded: "{rounded.none}"
+    padding: "0px"
+  card:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.tertiary}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.sm}"
+    padding: "50px 22px 30px"
+  input:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.on-surface}"
+    typography: "{typography.body-md}"
+    rounded: "{rounded.md}"
+    padding: "18px 20px"
+  nav-pill:
+    backgroundColor: "{colors.neutral}"
+    textColor: "{colors.primary}"
+    typography: "{typography.nav-link}"
+    rounded: "{rounded.xl}"
+    padding: "10px 18px"
+---
+
+# MeetUniversity
+
+## Overview
+MeetUniversity feels optimistic, international, and highly approachable, with a strong sense of trust built through clean whites, deep navy text, and a vivid blue call-to-action. The visual tone is editorial but friendly: large headlines, generous whitespace, and a polished hero image make the experience feel aspirational rather than corporate. It serves prospective students and families who want clarity, confidence, and momentum without visual clutter.
+
+## Colors
+- **Primary (#0073D1):** A confident, saturated blue used for key actions, active navigation states, and attention-grabbing accents. It carries the brand’s modern, digital-first energy.
+- **Primary Strong (#243855):** A deep navy used for headline text, navigation, and supporting UI surfaces where high contrast and authority are needed. This is the main anchor color in the system.
+- **Secondary (#7FB000):** A fresh green accent that appears in the logo and hero emphasis to signal growth, opportunity, and progress. Use it sparingly as a highlight rather than a dominant UI color.
+- **Tertiary (#5D6B81):** A muted blue-gray for paragraph text and secondary UI content. It softens the strong navy while keeping readability high.
+- **Neutral / Surface (#FFFFFF):** The dominant page and card background, creating the airy, open feeling seen throughout the layout.
+- **Border (#E7E7E8):** A very light divider color used for cards, section separators, and subtle structural rules.
+- **Accent Soft (#F5F8FC):** A pale cool background tint for understated highlights, chips, or informational panels when a softer layer is needed.
+- **Error (#D64545):** A clear alert red for validation and destructive states; it is not prominent in the screenshot but should remain restrained.
+
+## Typography
+The system pairs DM Sans with Koulen for a strong contrast between functional readability and bold display presence. DM Sans handles body copy, navigation, buttons, and smaller headings with a clean, friendly sans-serif feel. Koulen is used for hero and section headlines where a tall, condensed, poster-like voice is needed; it should remain uppercase or visually emphatic when used at large sizes.
+
+Headlines are expressive and oversized, with the display style reaching 90px / 108px line height in the hero and the Koulen styles used for large section markers. Body text stays comfortable and readable at 18px–20px with generous 24px–30px line heights. Labels and buttons use medium weight DM Sans, and the navigation keeps a regular weight for a lighter, more editorial feel. Letter spacing is tight and natural, with no visible uppercase tracking system beyond the strong condensed headline treatment.
+
+## Layout
+The layout is spacious and centered around a wide hero section with a clear left-right split: messaging on the left and imagery on the right. Content uses a fixed-max-width feel with large side margins rather than a dense fluid grid, helping the page breathe on large screens. Vertical rhythm is measured in clear steps: 10px, 20px, 30px, 40px, and a major 150px gap for larger section separation.
+
+Section padding is generous, especially around the hero and trust/logo strip, with thin horizontal rules used to divide major bands. Cards and smaller modules should maintain balanced internal padding rather than tight packing, preserving the brand’s open, confident tone. Align content to clean visual columns and avoid crowding secondary information near the hero headline or primary CTA.
+
+## Elevation & Depth
+The visual system is intentionally flat and minimal. Depth is created primarily through contrast, whitespace, and thin borders instead of heavy shadows. The only notable soft elevation appears as a subtle shadow treatment in supporting UI, but the interface mostly relies on clear layering and generous spacing.
+
+Use borders and tonal separation for structure rather than strong elevation stacks. Surfaces should remain clean white, with text and accents providing hierarchy. If a shadow is used, keep it very soft and restrained so the design does not compete with the hero imagery or the strong typography.
+
+## Shapes
+The shape language is smooth and friendly, with rounded pills for buttons and navigation tokens. The dominant radius is 32px on primary actions, which gives the interface a modern, approachable softness without feeling whimsical. Smaller containers use modest rounding, such as 8px for cards, to keep structural components tidy and restrained.
+
+Prefer rounded-rectangle forms for interactive elements and avoid sharp corners on major calls to action. The overall feel should be polished and accessible, with enough curvature to feel welcoming but not so much that the system becomes playful.
+
+## Components
+Buttons should be highly legible and prominent. Use `button-primary` for the main CTA: solid blue background, white text, 77px height, 21px x 30px padding, and pill-like rounding via `rounded.xl`. `button-primary-hover` may deepen the blue for interaction feedback. Use `button-secondary` for alternate emphasized actions with the same silhouette but reversed emphasis in text color and strong structure. `button-link` is for simple text actions in nav or helper contexts, with no background and no border radius.
+
+Cards should remain white, lightly bordered, and understated. Use `card` with an 8px radius, 1px light border, and generous top/bottom padding to support logos, trust badges, or informational blocks. Avoid heavy shadows; the card should feel like a neat container rather than a floating panel.
+
+Inputs should follow the same restrained language as cards: white surface, clear border, medium padding, and rounded corners. They should be readable and easy to scan, with `body-md` or `body-sm` text depending on density. Focus and validation states should rely on color and border clarity rather than dramatic motion.
+
+Navigation pills should be compact, rounded, and calm, with the active state using the brand blue to indicate the current page. Menu items should stay clean and evenly spaced, with no decorative treatment beyond subtle active highlighting. Trust/logo rows should remain horizontally aligned, balanced, and low-contrast so the branding around them stays primary.
+
+## Do's and Don'ts
+- Do keep the page airy, with large whitespace around hero content and section separators.
+- Do use the deep navy for most text and the bright blue only for calls to action and active states.
+- Do preserve the contrast between DM Sans for utility text and Koulen for bold editorial headlines.
+- Do keep buttons pill-shaped and consistently sized across the system.
+- Don't introduce heavy shadows, glassmorphism, or dense layered surfaces.
+- Don't replace the restrained white background with saturated section fills.
+- Don't use too many accent colors; green should stay a supporting highlight, not a competing theme.
+- Don't crowd content into narrow columns or reduce the generous vertical spacing rhythm.

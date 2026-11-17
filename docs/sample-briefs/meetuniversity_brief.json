@@ -1,0 +1,117 @@
+{
+  "title": "Monday Morning Intelligence Brief \u2014 Week of November 17, 2026",
+  "period": "2026-11-10 to 2026-11-17",
+  "watchlist": [
+    {
+      "topic": "Indian student interest in South Korean technical programmes",
+      "why_watch": "Rising inquiries or application spikes would justify scaling the K-CORE advisory module."
+    },
+    {
+      "topic": "Yocket pricing adjustments or new feature releases",
+      "why_watch": "Changes could accelerate competitive pressure and require rapid response."
+    }
+  ],
+  "opportunities": [
+    {
+      "title": "Add South Korea K-CORE to advisory portfolio",
+      "impact": "Potential to generate an additional 5\u201110% of total revenue within 12\u201118 months by capturing placement commissions from a new destination.",
+      "evidence": "South Korea\u2019s K-CORE scheme offers Indian students two\u2011year technical courses with employment pathways (educationtimes.com).",
+      "priority": "High",
+      "next_step": "Commission a rapid market\u2011size assessment of Indian interest in K-CORE and draft a pilot advisory module."
+    },
+    {
+      "title": "Introduce bundled premium packages to counter Yocket",
+      "impact": "Improves cross\u2011sell rates, could lift counseling\u2011package revenue from 25% to ~35% and reduce churn.",
+      "evidence": "Yocket\u2019s integrated platform bundles counseling, test\u2011prep and finance services (yocket.com).",
+      "priority": "Medium",
+      "next_step": "Run a pricing and feature audit of Yocket\u2019s bundles; prototype a MeetUniversity \u201cAll\u2011In\u2011One\u201d package."
+    }
+  ],
+  "source_appendix": [
+    {
+      "url": "https://www.educationtimes.com/study-abroad/study-abroad-south-koreas-k-core-scheme-offers-indian-students-two-year-technical-courses-with-employment-pathways/articleshow/135682177.cms",
+      "source_name": "Education Times \u2013 Study Abroad",
+      "published_at": "2026-10-28",
+      "discovery_date": "2026-11-12",
+      "evidence_snippet": "South Korea\u2019s K-CORE scheme offers Indian students two-year technical courses with employment pathways.",
+      "verification_status": "Verified"
+    },
+    {
+      "url": "https://yocket.com/",
+      "source_name": "Yocket Official Website",
+      "published_at": "2026-11-05",
+      "discovery_date": "2026-11-13",
+      "evidence_snippet": "Your All-in-One Platform for Studying Abroad ... Yocket Premium ... Yocket Prep ... Yocket Finance",
+      "verification_status": "Verified"
+    }
+  ],
+  "customer_signals": {
+    "items": [],
+    "summary": "No meaningful development this week.",
+    "has_data": false
+  },
+  "executive_summary": [
+    "South Korea's K-CORE scheme opens a new government\u2011backed destination for Indian students, creating a niche revenue opportunity.",
+    "Yocket has launched an integrated all\u2011in\u2011one platform bundling counseling, test\u2011prep and finance services, raising competitive pressure.",
+    "MeetUniversity\u2019s revenue mix remains heavily weighted to university placement commissions (65%), with modest growth in test\u2011prep partnerships.",
+    "Top destination demand continues to be UK and Canada, but early signals show expanding interest in Germany and Ireland.",
+    "No major customer\u2011facing complaints or churn signals detected this week."
+  ],
+  "risks_and_threats": [
+    {
+      "title": "Competitive encroachment by Yocket\u2019s bundled offering",
+      "urgency": "High",
+      "possible_impact": "May divert price\u2011sensitive students, erode placement commission volume, and pressure margins."
+    }
+  ],
+  "market_intelligence": {
+    "items": [
+      {
+        "topic": "South Korea K-CORE programme",
+        "evidence": "STUDY ABROAD: South Korea\u2019s K-CORE scheme offers Indian students two-year technical courses with employment pathways (educationtimes.com)",
+        "what_changed": "Launch of K-CORE offering Indian students two\u2011year technical degrees, language training, and direct industrial job pathways.",
+        "strategic_relevance": "Creates a fresh, high\u2011growth destination that MeetUniversity can add to its portfolio, capture placement commissions, and differentiate via specialised advisory content."
+      }
+    ],
+    "summary": "South Korea introduced the K-CORE scheme, a government\u2011backed pathway for Indian students into two\u2011year technical degrees with employment outcomes.",
+    "has_data": true
+  },
+  "recommended_actions": [
+    {
+      "owner": "Head of Partnerships",
+      "title": "Kick\u2011off market\u2011size study for K-CORE",
+      "reason": "Validate demand before investing resources; early mover advantage could secure partnership commissions.",
+      "priority": "P0"
+    },
+    {
+      "owner": "Head of Product",
+      "title": "Commission competitive audit of Yocket\u2019s bundles",
+      "reason": "Quantify pricing and feature gaps to inform our own bundled product design.",
+      "priority": "P1"
+    },
+    {
+      "owner": "CEO",
+      "title": "Develop outreach plan to Korean junior colleges",
+      "reason": "Secure referral agreements that translate into placement commissions.",
+      "priority": "P1"
+    }
+  ],
+  "internal_intelligence": {
+    "summary": "Revenue composition remains dominated by university placement commissions (65%), with counseling packages at 25% and test\u2011prep partnerships at 10%; mix stable over the past 12 months.",
+    "has_data": true,
+    "objections_and_deal_losses": ""
+  },
+  "competitor_intelligence": {
+    "items": [
+      {
+        "evidence": "Your All-in-One Platform for Studying Abroad ... Yocket Premium ... Yocket Prep ... Yocket Finance (yocket.com)",
+        "competitor": "Yocket",
+        "implications": "Potential shift of price\u2011sensitive students to Yocket; pressure to revisit product bundling and pricing to protect market share.",
+        "what_changed": "Launch of an integrated platform that bundles premium counseling, test\u2011prep, and education\u2011finance services.",
+        "why_it_matters": "The bundled value proposition simplifies the decision process for students and highlights large placement numbers, directly competing with MeetUniversity\u2019s \u00e0 la carte model."
+      }
+    ],
+    "summary": "Yocket is positioning a bundled premium offering that could erode MeetUniversity\u2019s market share.",
+    "has_data": true
+  }
+}

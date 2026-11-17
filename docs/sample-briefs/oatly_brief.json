@@ -1,0 +1,152 @@
+{
+  "title": "Monday Morning Intelligence Brief \u2014 Week of November 17, 2026",
+  "period": "2026-11-10 to 2026-11-17",
+  "watchlist": [
+    {
+      "topic": "Organic barista blend adoption by independent roasters",
+      "why_watch": "Track volume growth and pricing pressure; signals include retailer order data and coffee\u2011shop menu changes."
+    },
+    {
+      "topic": "EU legislative activity on plant\u2011based terminology",
+      "why_watch": "Future court cases or EU Commission proposals could alter labeling allowances."
+    },
+    {
+      "topic": "Nordic and Canadian oat harvest forecasts",
+      "why_watch": "Early weather reports and grain market pricing will indicate supply risk magnitude."
+    }
+  ],
+  "opportunities": [
+    {
+      "title": "Expand carbon\u2011footprint labeling across EU portfolio",
+      "impact": "Strengthens brand equity with climate\u2011conscious shoppers; potential incremental sales uplift of 3\u20115% in EU premium segment.",
+      "evidence": "EU court decision protects climate\u2011footprint comparison labels on plant\u2011based products.",
+      "priority": "High",
+      "next_step": "Coordinate with packaging suppliers to roll out unified carbon\u2011footprint graphics on all EU SKUs."
+    },
+    {
+      "title": "Develop an oil\u2011free, clean\u2011label barista formulation",
+      "impact": "Addresses a direct consumer objection; opens dialogue with health\u2011focused retailers and could capture share from organic\u2011focused competitors.",
+      "evidence": "28% of baristas reported customer concerns about rapeseed oil and glyphosate residues.",
+      "priority": "Medium",
+      "next_step": "Initiate a pilot test batch without seed oils for select cafe accounts."
+    },
+    {
+      "title": "Data limitation note",
+      "impact": "Further market research may uncover additional growth levers.",
+      "evidence": "Only two evidence\u2011backed opportunities identified from verified signals.",
+      "priority": "Low",
+      "next_step": "Commission a rapid consumer insight study on emerging clean\u2011label preferences."
+    }
+  ],
+  "source_appendix": [
+    {
+      "url": "https://www.califiafarms.com/blogs/press",
+      "source_name": "Califia Farms Press Release",
+      "published_at": "2026-11-05",
+      "discovery_date": "2026-11-12",
+      "evidence_snippet": "Califia Farms announced nationwide distribution of its USDA Organic Barista Blend with zero oils or gums, expanding into 4,000 independent coffee roasters.",
+      "verification_status": "Verified"
+    },
+    {
+      "url": "https://www.foodnavigator.com/Category/Formulation/Plant-based",
+      "source_name": "FoodNavigator EU Court Article",
+      "published_at": "2026-10-28",
+      "discovery_date": "2026-11-13",
+      "evidence_snippet": "The European Court of Justice dismissed requests to restrict climate footprint disclosures on non\u2011dairy food packaging.",
+      "verification_status": "Verified"
+    },
+    {
+      "url": "internal://uploads/oatly-sales-objections-q1.csv",
+      "source_name": "Internal Oatly Cafe Survey Q1",
+      "published_at": "2026-04-15",
+      "discovery_date": "2026-11-14",
+      "evidence_snippet": "Internal cafe survey revealed 28% of baristas had customers ask about rapeseed oil ingredients and requested a clean\u2011label alternative.",
+      "verification_status": "Verified"
+    }
+  ],
+  "customer_signals": {
+    "items": [
+      {
+        "topic": "Ingredient transparency concerns",
+        "evidence": "Internal cafe survey revealed 28% of baristas had customers ask about rapeseed oil ingredients and requested a clean\u2011label alternative.",
+        "implications": "If unaddressed, could erode loyalty among health\u2011focused consumers and give competitors a narrative advantage."
+      }
+    ],
+    "summary": "Barista\u2011level customers are increasingly questioning Oatly's ingredient list, specifically the presence of rapeseed oil and potential glyphosate residues, creating a clean\u2011label demand.",
+    "has_data": true
+  },
+  "executive_summary": [
+    "Califia Farms launched an organic Barista Oat Blend at 12% lower wholesale price, directly challenging Oatly's cafe\u2011first moat.",
+    "EU Court of Justice upheld Oatly's climate\u2011footprint labeling, unlocking a pan\u2011EU branding opportunity.",
+    "28% of specialty\u2011coffee baristas report customer concerns about rapeseed oil and glyphosate residues in Oatly Barista Edition.",
+    "Projected oat\u2011crop yield volatility in Nordic and Canadian regions threatens raw\u2011material supply and margins.",
+    "Ongoing regulatory debate in the US and EU over the use of the term \u201cmilk\u201d for plant\u2011based drinks adds compliance risk."
+  ],
+  "risks_and_threats": [
+    {
+      "title": "Califia Farms organic barista launch",
+      "urgency": "High",
+      "possible_impact": "Price erosion and potential loss of premium positioning in specialty coffee channels."
+    },
+    {
+      "title": "Oat crop yield volatility due to drought",
+      "urgency": "High",
+      "possible_impact": "Raw\u2011material cost spikes and margin compression across all product lines."
+    },
+    {
+      "title": "Regulatory labeling debate (US/EU)",
+      "urgency": "Medium",
+      "possible_impact": "Potential need to rebrand or relabel products, incurring redesign costs and consumer confusion."
+    }
+  ],
+  "market_intelligence": {
+    "items": [
+      {
+        "topic": "EU labeling precedent",
+        "evidence": "The European Court of Justice dismissed requests to restrict climate footprint disclosures on non\u2011dairy food packaging.",
+        "what_changed": "EU court affirmed plant\u2011based drinks cannot use protected dairy terms like 'milk' or 'butter' but rejected a proposed ban on carbon footprint comparison labels.",
+        "strategic_relevance": "Secures Oatly's current carbon\u2011footprint messaging in Europe and enables expansion of climate\u2011impact labeling across all 28 EU markets."
+      }
+    ],
+    "summary": "EU judicial ruling protects Oatly's climate\u2011footprint claims while maintaining the ability to use dairy\u2011related terminology, creating a regulatory win.",
+    "has_data": true
+  },
+  "recommended_actions": [
+    {
+      "owner": "Head of Partnerships",
+      "title": "Offer volume rebates to top 50 independent cafe accounts",
+      "reason": "Counteract Califia Farms' lower\u2011price organic blend and protect Oatly's cafe\u2011first market share.",
+      "priority": "P0"
+    },
+    {
+      "owner": "Head of Product",
+      "title": "Publish a transparent explainer on rapeseed oil usage and safety",
+      "reason": "Mitigate barista\u2011level health concerns and pre\u2011empt negative PR.",
+      "priority": "P1"
+    },
+    {
+      "owner": "Head of Marketing",
+      "title": "Roll out EU\u2011wide carbon\u2011footprint packaging",
+      "reason": "Leverage recent EU court ruling to deepen climate\u2011leadership positioning.",
+      "priority": "P1"
+    }
+  ],
+  "internal_intelligence": {
+    "summary": "Barista\u2011facing health objections are surfacing, with a notable share of inquiries about seed\u2011oil content and glyphosate residues.",
+    "has_data": true,
+    "objections_and_deal_losses": "Internal cafe survey (Q1) shows 28% of baristas field questions on rapeseed oil and glyphosate; no documented deal losses yet, but risk of future churn if concerns are not mitigated."
+  },
+  "competitor_intelligence": {
+    "items": [
+      {
+        "evidence": "Califia Farms announced nationwide distribution of its USDA Organic Barista Blend with zero oils or gums, expanding into 4,000 independent coffee roasters.",
+        "competitor": "Califia Farms",
+        "implications": "Potential loss of shelf space and volume in independent coffee accounts; price pressure may force Oatly to reconsider pricing or product formulation.",
+        "what_changed": "Launched a shelf\u2011stable Organic Barista Oat Blend with zero added gums, targeting specialty cafe chains at 12% lower wholesale pricing.",
+        "why_it_matters": "Direct competitive threat in Oatly's signature cafe moat; organic formulation directly addresses customer criticisms of Oatly using rapeseed oil."
+      }
+    ],
+    "summary": "Califia Farms is attacking Oatly's core barista segment with an organic, gum\u2011free oat blend priced 12% below Oatly's wholesale rate.",
+    "has_data": true
+  }
+}

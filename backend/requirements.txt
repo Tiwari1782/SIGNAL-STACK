@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+psycopg[binary,pool]
+pydantic
+python-dotenv
+requests
+beautifulsoup4
+trafilatura
+feedparser
+ddgs
+google-genai
+groq
+pandas
+openpyxl
+pypdf
+python-multipart

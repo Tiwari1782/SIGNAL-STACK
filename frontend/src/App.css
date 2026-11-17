@@ -2,6 +2,7 @@
 .app-layout {
   display: flex;
   min-height: 100vh;
+  position: relative;
 }
 
 /* ── Sidebar ───────────────────────────────── */
@@ -17,18 +18,37 @@
   top: 0;
   left: 0;
   z-index: 100;
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 2px 0 10px rgba(36, 56, 85, 0.08);
+}
+
+.sidebar--collapsed {
+  width: 72px;
 }
 
 .sidebar-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: var(--s-xs) var(--s-sm);
+  justify-content: space-between;
+  padding: var(--s-xs) 14px;
   margin-bottom: var(--s-xs);
+  min-height: 48px;
+}
+
+.sidebar-brand-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
 }
 
 .sidebar-logo {
   font-size: 24px;
+  color: #4DA9FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .sidebar-title {
@@ -36,16 +56,68 @@
   font-size: 1.4rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* Tactile Sidebar Toggle Button */
+.sidebar-toggle-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  border-radius: var(--r-sm);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: scale(1.05);
+}
+
+.sidebar-toggle-btn:active {
+  transform: scale(0.95);
 }
 
 .sidebar-company {
-  margin: 0 var(--s-sm) var(--s-xs);
+  margin: 0 12px var(--s-xs);
   padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--r-md);
   display: flex;
   flex-direction: column;
   gap: 2px;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.sidebar--collapsed .sidebar-company {
+  margin: 0 10px var(--s-xs);
+  padding: 8px 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-company-avatar {
+  font-size: 16px;
+  font-weight: 700;
+  color: #4DA9FF;
+  background: rgba(77, 169, 255, 0.15);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sidebar-company-label {
@@ -67,8 +139,8 @@
 .sidebar-nav {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: 0 10px;
+  gap: 4px;
+  padding: 0 8px;
 }
 
 .sidebar-link {
@@ -81,24 +153,43 @@
   font-size: 15px;
   font-weight: 500;
   text-decoration: none;
-  transition: all 0.15s;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sidebar--collapsed .sidebar-link {
+  justify-content: center;
+  padding: 10px 0;
 }
 
 .sidebar-link:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   color: #fff;
   text-decoration: none;
 }
 
 .sidebar-link--active {
-  background: rgba(255, 255, 255, 0.15);
+  background: linear-gradient(180deg, rgba(0, 115, 209, 0.6) 0%, rgba(0, 115, 209, 0.8) 100%);
   color: #fff;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .sidebar-link-icon {
   font-size: 18px;
   width: 24px;
   text-align: center;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-link-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ── Main content ──────────────────────────── */
@@ -106,5 +197,21 @@
   margin-left: 240px;
   flex: 1;
   padding: var(--s-md) var(--s-lg);
-  max-width: 1100px;
+  max-width: 1200px;
+  transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 0;
+}
+
+.sidebar-collapsed .main-content {
+  margin-left: 72px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 64px;
+  }
+  .main-content {
+    margin-left: 64px;
+    padding: var(--s-sm);
+  }
 }

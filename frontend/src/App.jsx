@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import {
   FiSliders,
@@ -9,6 +10,9 @@ import {
   FiFileText,
   FiSettings,
   FiRadio,
+  FiChevronLeft,
+  FiChevronRight,
+  FiMenu,
 } from 'react-icons/fi';
 import SetupPage from './pages/SetupPage';
 import ProfilePage from './pages/ProfilePage';
@@ -35,19 +39,39 @@ const NAV_ITEMS = [
 
 export default function App() {
   const { company } = useCompany();
+  const [isOpen, setIsOpen] = useState(true);
 
   return (
-    <div className="app-layout">
-      <aside className="sidebar">
+    <div className={`app-layout ${isOpen ? 'sidebar-open' : 'sidebar-collapsed'}`}>
+      <aside className={`sidebar ${isOpen ? 'sidebar--expanded' : 'sidebar--collapsed'}`}>
         <div className="sidebar-brand">
-          <span className="sidebar-logo"><FiRadio /></span>
-          <span className="sidebar-title">Signal Stack</span>
+          <div className="sidebar-brand-main">
+            <span className="sidebar-logo"><FiRadio /></span>
+            {isOpen && <span className="sidebar-title">Signal Stack</span>}
+          </div>
+          <button
+            type="button"
+            className="sidebar-toggle-btn"
+            onClick={() => setIsOpen(!isOpen)}
+            title={isOpen ? 'Collapse sidebar' : 'Expand sidebar'}
+            aria-label={isOpen ? 'Collapse sidebar' : 'Expand sidebar'}
+          >
+            {isOpen ? <FiChevronLeft /> : <FiChevronRight />}
+          </button>
         </div>
 
         {company && (
-          <div className="sidebar-company">
-            <span className="sidebar-company-label">Active</span>
-            <span className="sidebar-company-name">{company.name}</span>
+          <div className="sidebar-company" title={company.name}>
+            {isOpen ? (
+              <>
+                <span className="sidebar-company-label">Active</span>
+                <span className="sidebar-company-name">{company.name}</span>
+              </>
+            ) : (
+              <span className="sidebar-company-avatar">
+                {company.name.charAt(0).toUpperCase()}
+              </span>
+            )}
           </div>
         )}
 
@@ -59,12 +83,13 @@ export default function App() {
                 key={item.path}
                 to={item.path}
                 end={item.path === '/'}
+                title={!isOpen ? item.label : undefined}
                 className={({ isActive }) =>
                   `sidebar-link${isActive ? ' sidebar-link--active' : ''}`
                 }
               >
                 <span className="sidebar-link-icon"><Icon /></span>
-                <span>{item.label}</span>
+                {isOpen && <span className="sidebar-link-text">{item.label}</span>}
               </NavLink>
             );
           })}

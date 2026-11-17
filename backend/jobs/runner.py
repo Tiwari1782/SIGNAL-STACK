@@ -2,7 +2,10 @@
 import json
 import logging
 import traceback
-from ..app.db import query
+try:
+    from backend.app.db import query
+except (ImportError, ModuleNotFoundError, ValueError):
+    from app.db import query
 
 log = logging.getLogger(__name__)
 

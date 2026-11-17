@@ -1,13 +1,29 @@
 """Router for Job Runs, Scheduled Trigger Endpoints, and Audit Reports."""
 
 import logging
+import os
+import sys
 from typing import Optional
 from fastapi import APIRouter, HTTPException, BackgroundTasks
 from pydantic import BaseModel
 from ..db import query
-from ...jobs.runner import run_logged
-from ...jobs.weekly_brief import generate_for_company
-from ...jobs.monthly_audit import audit_company
+
+try:
+    from backend.jobs.runner import run_logged
+    from backend.jobs.weekly_brief import generate_for_company
+    from backend.jobs.monthly_audit import audit_company
+except (ImportError, ModuleNotFoundError, ValueError):
+    try:
+        from jobs.runner import run_logged
+        from jobs.weekly_brief import generate_for_company
+        from jobs.monthly_audit import audit_company
+    except (ImportError, ModuleNotFoundError, ValueError):
+        parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+        if parent_dir not in sys.path:
+            sys.path.insert(0, parent_dir)
+        from jobs.runner import run_logged
+        from jobs.weekly_brief import generate_for_company
+        from jobs.monthly_audit import audit_company
 
 router = APIRouter(tags=["jobs"])
 log = logging.getLogger(__name__)
@@ -31,75 +47,22 @@ def list_all_job_runs(limit: int = 50):
 
 
 @router.get("/api/companies/{company_id}/job-runs")
-def list_company_job_runs(company_id: int, limit: int = 30):
+def list_company_job_runs(company_id: int, limit: int = 25):
     """List job runs for a specific company."""
     return query(
-        """SELECT j.*, c.name as company_name
-           FROM job_runs j
-           LEFT JOIN companies c ON c.id = j.company_id
-           WHERE j.company_id = %s OR j.company_id IS NULL
-           ORDER BY j.started_at DESC
+        """SELECT * FROM job_runs
+           WHERE company_id = %s
+           ORDER BY started_at DESC
            LIMIT %s""",
         (company_id, limit)
     )
 
 
-@router.post("/api/jobs/weekly_brief/run")
-def trigger_weekly_brief(body: RunJobRequest):
-    """Manually trigger the full weekly brief pipeline."""
-    company_id = body.company_id
-    if not company_id:
-        c = query("SELECT id FROM companies ORDER BY id LIMIT 1", one=True)
-        if not c:
-            raise HTTPException(400, "No company exists to run brief for")
-        company_id = c["id"]
-
-    try:
-        run_res = run_logged(
-            "weekly_brief",
-            lambda: generate_for_company(company_id),
-            company_id=company_id,
-            raise_on_error=False
-        )
-        return run_res
-    except Exception as e:
-        log.error("Failed executing weekly brief trigger: %s", e)
-        raise HTTPException(500, f"Weekly brief failed: {str(e)}")
-
-
-@router.post("/api/jobs/monthly_audit/run")
-def trigger_monthly_audit(body: RunJobRequest):
-    """Manually trigger the Signal Stack monthly health audit."""
-    company_id = body.company_id
-    if not company_id:
-        c = query("SELECT id FROM companies ORDER BY id LIMIT 1", one=True)
-        if not c:
-            raise HTTPException(400, "No company exists to run audit for")
-        company_id = c["id"]
-
-    try:
-        run_res = run_logged(
-            "monthly_audit",
-            lambda: audit_company(company_id),
-            company_id=company_id,
-            raise_on_error=False
-        )
-        return run_res
-    except Exception as e:
-        log.error("Failed executing monthly audit trigger: %s", e)
-        raise HTTPException(500, f"Monthly audit failed: {str(e)}")
-
-
 @router.get("/api/companies/{company_id}/audit-reports")
-def list_audit_reports(company_id: int, limit: int = 20):
-    """List historical monthly audit reports for a company."""
+def list_audit_reports(company_id: int, limit: int = 10):
+    """List monthly Signal Stack audit reports for a company."""
     return query(
-        """SELECT id, company_id, created_at,
-                  (content->>'health_score')::int as health_score,
-                  (content->>'total_sources_audited')::int as total_sources_audited,
-                  content->>'summary' as summary,
-                  content
-           FROM audit_reports
+        """SELECT * FROM audit_reports
            WHERE company_id = %s
            ORDER BY created_at DESC
            LIMIT %s""",
@@ -107,17 +70,46 @@ def list_audit_reports(company_id: int, limit: int = 20):
     )
 
 
-@router.get("/api/audit-reports/{report_id}")
-def get_audit_report(report_id: int):
-    """Get a specific full audit report."""
-    report = query(
-        """SELECT a.*, c.name as company_name
-           FROM audit_reports a
-           JOIN companies c ON c.id = a.company_id
-           WHERE a.id = %s""",
-        (report_id,),
-        one=True
-    )
-    if not report:
-        raise HTTPException(404, "Audit report not found")
-    return report
+@router.post("/api/jobs/weekly_brief/run")
+def trigger_weekly_brief(body: RunJobRequest, background_tasks: BackgroundTasks):
+    """Trigger the Monday Morning Brief generation pipeline on demand."""
+    if not body.company_id:
+        raise HTTPException(400, "company_id is required to run weekly brief")
+
+    # Run the weekly brief synchronously or via background task
+    try:
+        res = run_logged(
+            job_name="weekly_brief",
+            company_id=body.company_id,
+            fn=lambda: generate_for_company(body.company_id)
+        )
+        return {
+            "status": "success" if res.get("brief_id") or res.get("id") else "partial",
+            "message": "Weekly brief execution completed",
+            "summary": res
+        }
+    except Exception as e:
+        log.error("Error triggering weekly brief: %s", e)
+        raise HTTPException(500, f"Weekly brief failed: {str(e)}")
+
+
+@router.post("/api/jobs/monthly_audit/run")
+def trigger_monthly_audit(body: RunJobRequest):
+    """Trigger the Monthly Signal Stack Audit on demand."""
+    if not body.company_id:
+        raise HTTPException(400, "company_id is required to run monthly audit")
+
+    try:
+        res = run_logged(
+            job_name="monthly_audit",
+            company_id=body.company_id,
+            fn=lambda: audit_company(body.company_id)
+        )
+        return {
+            "status": "success",
+            "message": "Monthly audit completed",
+            "summary": res
+        }
+    except Exception as e:
+        log.error("Error triggering monthly audit: %s", e)
+        raise HTTPException(500, f"Monthly audit failed: {str(e)}")

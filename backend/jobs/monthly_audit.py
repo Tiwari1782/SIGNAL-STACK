@@ -15,9 +15,14 @@ from datetime import datetime, timezone
 import logging
 from urllib.parse import urlparse
 import requests
-from .runner import run_logged
-from ..app.db import query
-from ..app.services.discovery import discover_sources_for_company
+try:
+    from .runner import run_logged
+    from backend.app.db import query
+    from backend.app.services.discovery import discover_sources_for_company
+except (ImportError, ModuleNotFoundError, ValueError):
+    from runner import run_logged
+    from app.db import query
+    from app.services.discovery import discover_sources_for_company
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 log = logging.getLogger("monthly_audit_job")

@@ -14,12 +14,20 @@ import argparse
 import logging
 import os
 import sys
-from .runner import run_logged
-from ..app.db import query
-from ..app.services.crawler import crawl_source
-from ..app.services.analysis import analyze_document
-from ..app.services.brief_generator import generate_brief_for_company
-from ..app.services.email import send_brief
+try:
+    from .runner import run_logged
+    from backend.app.db import query
+    from backend.app.services.crawler import crawl_source
+    from backend.app.services.analysis import analyze_document
+    from backend.app.services.brief_generator import generate_brief_for_company
+    from backend.app.services.email import send_brief
+except (ImportError, ModuleNotFoundError, ValueError):
+    from runner import run_logged
+    from app.db import query
+    from app.services.crawler import crawl_source
+    from app.services.analysis import analyze_document
+    from app.services.brief_generator import generate_brief_for_company
+    from app.services.email import send_brief
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 log = logging.getLogger("weekly_brief_job")

@@ -1,9 +1,13 @@
 import os, smtplib, ssl, logging
 from email.message import EmailMessage
+from dotenv import load_dotenv
 
 log = logging.getLogger(__name__)
 
 def send_brief(to: str, subject: str, html: str):
+    # Always reload .env so edits to GMAIL_USER / GMAIL_APP_PASSWORD take effect immediately without restarting server
+    load_dotenv(override=True)
+
     user = os.environ.get("GMAIL_USER", "").strip()
     pwd = os.environ.get("GMAIL_APP_PASSWORD", "").strip().replace(" ", "")
 
@@ -62,7 +66,6 @@ def send_brief(to: str, subject: str, html: str):
             f"was generated at https://myaccount.google.com/apppasswords with 2-Step Verification enabled."
         ) from e
     except smtplib.SMTPServerDisconnected as e:
-        # Gmail drops socket on invalid credentials instead of sending 535 in certain SSL negotiations
         raise ValueError(
             f"Gmail connection closed during authentication. This usually indicates Google rejected "
             f"the credentials for '{user}'. Please regenerate a fresh 16-character App Password at "

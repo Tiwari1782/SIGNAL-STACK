@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiCheck, FiHelpCircle, FiUser, FiExternalLink, FiEdit3, FiSave, FiX } from 'react-icons/fi';
 import api from '../api';
 import { useCompany } from '../context/CompanyContext';
+import PageSkeleton from '../components/PageSkeleton';
 import './ProfilePage.css';
 
 const STATUS_META = {
@@ -12,21 +13,28 @@ const STATUS_META = {
 };
 
 export default function ProfilePage() {
-  const { company } = useCompany();
+  const { company, loadingCompany } = useCompany();
   const [facts, setFacts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState(null);
   const [editValue, setEditValue] = useState('');
   const [saving, setSaving] = useState(false);
 
   const loadFacts = useCallback(async () => {
-    if (!company) return;
+    if (!company) {
+      if (!loadingCompany) setLoading(false);
+      return;
+    }
+    setLoading(true);
     try {
       const res = await api.get(`/companies/${company.id}/profile`);
       setFacts(res.data);
     } catch (err) {
       console.error('Failed to load profile facts', err);
+    } finally {
+      setLoading(false);
     }
-  }, [company]);
+  }, [company, loadingCompany]);
 
   useEffect(() => {
     loadFacts();
@@ -61,6 +69,11 @@ export default function ProfilePage() {
     } finally {
       setSaving(false);
     }
+  }
+
+  // Display skeleton while data is fetching from backend
+  if (loading || loadingCompany) {
+    return <PageSkeleton />;
   }
 
   if (!company) {

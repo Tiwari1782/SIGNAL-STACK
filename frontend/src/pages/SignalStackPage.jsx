@@ -18,6 +18,7 @@ import {
 } from 'react-icons/fi';
 import api from '../api';
 import { useCompany } from '../context/CompanyContext';
+import PageSkeleton from '../components/PageSkeleton';
 import './SignalStackPage.css';
 
 const TABS = [
@@ -29,7 +30,7 @@ const TABS = [
 ];
 
 export default function SignalStackPage() {
-  const { company } = useCompany();
+  const { company, loadingCompany } = useCompany();
   const [loading, setLoading] = useState(true);
   const [building, setBuilding] = useState(false);
   const [crawling, setCrawling] = useState(false);
@@ -127,6 +128,10 @@ export default function SignalStackPage() {
     } finally {
       setActionId(null);
     }
+  }
+
+  if (loading || loadingCompany) {
+    return <PageSkeleton />;
   }
 
   if (!company) {

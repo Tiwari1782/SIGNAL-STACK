@@ -20,6 +20,7 @@ import {
 } from 'react-icons/fi';
 import { useCompany } from '../context/CompanyContext';
 import { useToast } from '../context/ToastContext';
+import PageSkeleton from '../components/PageSkeleton';
 import './SettingsPage.css';
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:8000';
@@ -34,7 +35,7 @@ const safeDecode = (url) => {
 };
 
 export default function SettingsPage() {
-  const { company } = useCompany();
+  const { company, loadingCompany } = useCompany();
   const { addToast } = useToast();
 
   const [loading, setLoading] = useState(true);
@@ -62,11 +63,11 @@ export default function SettingsPage() {
 
   useEffect(() => {
     if (!company) {
-      setLoading(false);
+      if (!loadingCompany) setLoading(false);
       return;
     }
     fetchSettingsAndLogs();
-  }, [company]);
+  }, [company, loadingCompany]);
 
   const fetchSettingsAndLogs = async () => {
     setLoading(true);
@@ -164,6 +165,10 @@ export default function SettingsPage() {
       setRunningAudit(false);
     }
   };
+
+  if (loading || loadingCompany) {
+    return <PageSkeleton />;
+  }
 
   if (!company) {
     return (

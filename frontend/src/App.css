@@ -1,13 +1,14 @@
-/* App layout — sidebar + main content */
+/* App layout — full screen responsive layout with sliding sidebar */
 .app-layout {
   display: flex;
   min-height: 100vh;
   position: relative;
+  width: 100%;
 }
 
-/* ── Sidebar ───────────────────────────────── */
+/* ── Sliding Sidebar ────────────────────────── */
 .sidebar {
-  width: 240px;
+  width: 250px;
   min-height: 100vh;
   background: var(--primary-strong);
   color: #fff;
@@ -17,20 +18,22 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
-  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 2px 0 10px rgba(36, 56, 85, 0.08);
+  z-index: 200;
+  transform: translateX(0);
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 4px 0 18px rgba(36, 56, 85, 0.12);
 }
 
-.sidebar--collapsed {
-  width: 72px;
+.sidebar--closed {
+  transform: translateX(-100%);
+  box-shadow: none;
 }
 
 .sidebar-brand {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--s-xs) 14px;
+  padding: var(--s-xs) 16px;
   margin-bottom: var(--s-xs);
   min-height: 48px;
 }
@@ -38,17 +41,7 @@
 .sidebar-brand-main {
   display: flex;
   align-items: center;
-  gap: 10px;
   overflow: hidden;
-}
-
-.sidebar-logo {
-  font-size: 24px;
-  color: #4DA9FF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
 }
 
 .sidebar-title {
@@ -65,13 +58,13 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: #FFFFFF;
   border-radius: var(--r-sm);
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
   transition: all 0.2s ease;
   flex-shrink: 0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
@@ -87,8 +80,58 @@
   transform: scale(0.95);
 }
 
+/* Floating Sidebar Open Button (appears when sidebar is closed) */
+.floating-sidebar-open-btn {
+  position: fixed;
+  top: 16px;
+  left: 20px;
+  z-index: 150;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%);
+  color: var(--primary-strong);
+  border: 1px solid #DFE3E8;
+  border-radius: var(--r-xl);
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 
+    0 4px 14px rgba(36, 56, 85, 0.12),
+    0 1px 3px rgba(36, 56, 85, 0.08),
+    inset 0 1px 0 #FFFFFF;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeIn 0.2s ease;
+}
+
+.floating-sidebar-open-btn:hover {
+  background: linear-gradient(180deg, #FFFFFF 0%, #EEF4FB 100%);
+  color: var(--primary);
+  border-color: #B5D2F2;
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 18px rgba(0, 115, 209, 0.18),
+    0 2px 5px rgba(36, 56, 85, 0.1);
+}
+
+.floating-sidebar-open-btn:active {
+  transform: translateY(1px);
+}
+
+.floating-menu-icon {
+  font-size: 17px;
+  color: var(--primary);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Company Badge in Sidebar ─────────────────── */
 .sidebar-company {
-  margin: 0 12px var(--s-xs);
+  margin: 0 14px var(--s-xs);
   padding: 10px 14px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -97,27 +140,6 @@
   flex-direction: column;
   gap: 2px;
   overflow: hidden;
-  transition: all 0.2s;
-}
-
-.sidebar--collapsed .sidebar-company {
-  margin: 0 10px var(--s-xs);
-  padding: 8px 0;
-  align-items: center;
-  justify-content: center;
-}
-
-.sidebar-company-avatar {
-  font-size: 16px;
-  font-weight: 700;
-  color: #4DA9FF;
-  background: rgba(77, 169, 255, 0.15);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .sidebar-company-label {
@@ -140,7 +162,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 0 8px;
+  padding: 0 10px;
 }
 
 .sidebar-link {
@@ -156,11 +178,6 @@
   transition: all 0.15s ease;
   white-space: nowrap;
   overflow: hidden;
-}
-
-.sidebar--collapsed .sidebar-link {
-  justify-content: center;
-  padding: 10px 0;
 }
 
 .sidebar-link:hover {
@@ -192,26 +209,41 @@
   text-overflow: ellipsis;
 }
 
-/* ── Main content ──────────────────────────── */
+/* ── Main content — dynamically enlarges when sidebar collapses ────── */
 .main-content {
-  margin-left: 240px;
+  margin-left: 250px;
   flex: 1;
   padding: var(--s-md) var(--s-lg);
-  max-width: 1200px;
-  transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 1250px;
+  width: calc(100% - 250px);
   min-width: 0;
+  transition: margin-left 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+              width 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+              max-width 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.sidebar-collapsed .main-content {
-  margin-left: 72px;
+/* When sidebar is closed: main content enlarges to full 100% width! */
+.sidebar-closed .main-content {
+  margin-left: 0;
+  width: 100%;
+  max-width: 1400px;
+  padding-left: calc(var(--s-lg) + 70px); /* comfort padding so floating Menu button doesn't obstruct headers */
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .sidebar {
-    width: 64px;
+    width: 220px;
   }
   .main-content {
-    margin-left: 64px;
+    margin-left: 220px;
+    width: calc(100% - 220px);
     padding: var(--s-sm);
+  }
+  .sidebar-closed .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: var(--s-sm);
+    padding-top: 60px;
   }
 }

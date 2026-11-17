@@ -9,9 +9,7 @@ import {
   FiActivity,
   FiFileText,
   FiSettings,
-  FiRadio,
   FiChevronLeft,
-  FiChevronRight,
   FiMenu,
 } from 'react-icons/fi';
 import SetupPage from './pages/SetupPage';
@@ -24,6 +22,7 @@ import BriefPage from './pages/BriefPage';
 import SettingsPage from './pages/SettingsPage';
 import { useCompany } from './context/CompanyContext';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import RouteTransition from './components/RouteTransition';
 import './App.css';
 
 const NAV_ITEMS = [
@@ -42,36 +41,42 @@ export default function App() {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
-    <div className={`app-layout ${isOpen ? 'sidebar-open' : 'sidebar-collapsed'}`}>
-      <aside className={`sidebar ${isOpen ? 'sidebar--expanded' : 'sidebar--collapsed'}`}>
+    <div className={`app-layout ${isOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+      {/* Floating Toggle Button when Sidebar is fully closed */}
+      {!isOpen && (
+        <button
+          type="button"
+          className="floating-sidebar-open-btn"
+          onClick={() => setIsOpen(true)}
+          title="Open Navigation Menu"
+          aria-label="Open Navigation Menu"
+        >
+          <FiMenu className="floating-menu-icon" />
+          <span>Menu</span>
+        </button>
+      )}
+
+      {/* Slide-out Sidebar */}
+      <aside className={`sidebar ${isOpen ? 'sidebar--open' : 'sidebar--closed'}`}>
         <div className="sidebar-brand">
           <div className="sidebar-brand-main">
-            <span className="sidebar-logo"><FiRadio /></span>
-            {isOpen && <span className="sidebar-title">Signal Stack</span>}
+            <span className="sidebar-title">Signal Stack</span>
           </div>
           <button
             type="button"
             className="sidebar-toggle-btn"
-            onClick={() => setIsOpen(!isOpen)}
-            title={isOpen ? 'Collapse sidebar' : 'Expand sidebar'}
-            aria-label={isOpen ? 'Collapse sidebar' : 'Expand sidebar'}
+            onClick={() => setIsOpen(false)}
+            title="Collapse Sidebar"
+            aria-label="Collapse Sidebar"
           >
-            {isOpen ? <FiChevronLeft /> : <FiChevronRight />}
+            <FiChevronLeft />
           </button>
         </div>
 
         {company && (
           <div className="sidebar-company" title={company.name}>
-            {isOpen ? (
-              <>
-                <span className="sidebar-company-label">Active</span>
-                <span className="sidebar-company-name">{company.name}</span>
-              </>
-            ) : (
-              <span className="sidebar-company-avatar">
-                {company.name.charAt(0).toUpperCase()}
-              </span>
-            )}
+            <span className="sidebar-company-label">Active</span>
+            <span className="sidebar-company-name">{company.name}</span>
           </div>
         )}
 
@@ -83,31 +88,33 @@ export default function App() {
                 key={item.path}
                 to={item.path}
                 end={item.path === '/'}
-                title={!isOpen ? item.label : undefined}
                 className={({ isActive }) =>
                   `sidebar-link${isActive ? ' sidebar-link--active' : ''}`
                 }
               >
                 <span className="sidebar-link-icon"><Icon /></span>
-                {isOpen && <span className="sidebar-link-text">{item.label}</span>}
+                <span className="sidebar-link-text">{item.label}</span>
               </NavLink>
             );
           })}
         </nav>
       </aside>
 
+      {/* Main Content Area - Expands to 100% when sidebar is closed */}
       <main className="main-content">
         <ErrorBoundary>
-          <Routes>
-            <Route path="/" element={<SetupPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/interview" element={<InterviewPage />} />
-            <Route path="/signal-stack" element={<SignalStackPage />} />
-            <Route path="/sources" element={<SourcesPage />} />
-            <Route path="/feed" element={<FeedPage />} />
-            <Route path="/brief" element={<BriefPage />} />
-            <Route path="/settings" element={<SettingsPage />} />
-          </Routes>
+          <RouteTransition>
+            <Routes>
+              <Route path="/" element={<SetupPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/interview" element={<InterviewPage />} />
+              <Route path="/signal-stack" element={<SignalStackPage />} />
+              <Route path="/sources" element={<SourcesPage />} />
+              <Route path="/feed" element={<FeedPage />} />
+              <Route path="/brief" element={<BriefPage />} />
+              <Route path="/settings" element={<SettingsPage />} />
+            </Routes>
+          </RouteTransition>
         </ErrorBoundary>
       </main>
     </div>

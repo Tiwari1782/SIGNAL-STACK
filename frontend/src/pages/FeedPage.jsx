@@ -20,6 +20,7 @@ import {
 import api from '../api';
 import { useCompany } from '../context/CompanyContext';
 import UploadModal from '../components/UploadModal';
+import PageSkeleton from '../components/PageSkeleton';
 import './FeedPage.css';
 
 const IMPACT_COLORS = {
@@ -35,7 +36,7 @@ const VERIF_META = {
 };
 
 export default function FeedPage() {
-  const { company } = useCompany();
+  const { company, loadingCompany } = useCompany();
   const [data, setData] = useState({ signals: [], stats: {}, competitors: [] });
   const [loading, setLoading] = useState(true);
   const [analyzing, setAnalyzing] = useState(false);
@@ -99,6 +100,10 @@ export default function FeedPage() {
       from: '',
       to: ''
     });
+  }
+
+  if (loading || loadingCompany) {
+    return <PageSkeleton />;
   }
 
   if (!company) {

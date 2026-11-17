@@ -4,12 +4,14 @@ import { FiPlus, FiSearch, FiCheck, FiExternalLink, FiCheckSquare, FiSquare } fr
 import api from '../api';
 import { useCompany } from '../context/CompanyContext';
 import { useToast } from '../context/ToastContext';
+import PageSkeleton from '../components/PageSkeleton';
 import './SetupPage.css';
 
 export default function SetupPage() {
   const [name, setName] = useState('');
   const [website, setWebsite] = useState('');
   const [companies, setCompanies] = useState([]);
+  const [fetchingCompanies, setFetchingCompanies] = useState(true);
   const [loading, setLoading] = useState(false);
   const [researchingId, setResearchingId] = useState(null);
   const [error, setError] = useState('');
@@ -22,6 +24,7 @@ export default function SetupPage() {
   }, []);
 
   async function fetchCompanies() {
+    setFetchingCompanies(true);
     try {
       const res = await api.get('/companies');
       setCompanies(res.data);
@@ -32,6 +35,8 @@ export default function SetupPage() {
     } catch (err) {
       console.error('Failed to load companies', err);
       toast.error('Failed to connect to database to fetch companies.');
+    } finally {
+      setFetchingCompanies(false);
     }
   }
 
@@ -77,6 +82,10 @@ export default function SetupPage() {
   function handleSelectCompany(companyItem) {
     setCompany(companyItem);
     toast.info(`Switched active organization to ${companyItem.name}`);
+  }
+
+  if (fetchingCompanies) {
+    return <PageSkeleton />;
   }
 
   return (

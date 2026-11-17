@@ -17,10 +17,11 @@ import {
 } from 'react-icons/fi';
 import api from '../api';
 import { useCompany } from '../context/CompanyContext';
+import PageSkeleton from '../components/PageSkeleton';
 import './SourcesPage.css';
 
 export default function SourcesPage() {
-  const { company } = useCompany();
+  const { company, loadingCompany } = useCompany();
   const [sources, setSources] = useState([]);
   const [loading, setLoading] = useState(true);
   const [crawlingId, setCrawlingId] = useState(null);
@@ -148,6 +149,10 @@ export default function SourcesPage() {
     } finally {
       setLoadingHistory(false);
     }
+  }
+
+  if (loading || loadingCompany) {
+    return <PageSkeleton />;
   }
 
   if (!company) {

@@ -23,10 +23,11 @@ import {
 } from 'react-icons/fi';
 import api from '../api';
 import { useCompany } from '../context/CompanyContext';
+import PageSkeleton from '../components/PageSkeleton';
 import './BriefPage.css';
 
 export default function BriefPage() {
-  const { company } = useCompany();
+  const { company, loadingCompany } = useCompany();
   const [briefsList, setBriefsList] = useState([]);
   const [selectedBriefId, setSelectedBriefId] = useState(null);
   const [briefData, setBriefData] = useState(null);
@@ -128,6 +129,10 @@ export default function BriefPage() {
     } finally {
       setSendingEmail(false);
     }
+  }
+
+  if (loading || loadingCompany) {
+    return <PageSkeleton />;
   }
 
   if (!company) {

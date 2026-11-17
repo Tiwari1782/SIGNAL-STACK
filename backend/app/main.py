@@ -26,6 +26,16 @@ app.include_router(settings_router)
 app.include_router(jobs_router)
 app.include_router(uploads_router)
 
+@app.get("/")
+def root():
+    return {
+        "status": "online",
+        "name": "Signal Stack API",
+        "docs": "/docs",
+        "health": "/health",
+        "version": "1.0.0"
+    }
+
 @app.get("/health")
 def health():
     query("SELECT 1")
